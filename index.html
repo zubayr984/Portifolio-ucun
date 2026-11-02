@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Code_X_Root — Senior Frontend Developer | Toshkent</title>
+<meta name="description" content="Abdulloh (Code_X_Root) — Toshkentlik Senior Frontend / Full-Stack Developer. Zero-dependency, single-file SaaS mahsulotlar quraman.">
+<!-- IJTIMOIY TARMOQQA ULASHGANDA CHIROYLI PREVIEW UCHUN: og:image'ni haqiqiy rasm URL'iga almashtiring (data:// ishlamaydi, haqiqiy hosted rasm bo'lishi kerak) -->
+<meta property="og:title" content="Code_X_Root — Senior Frontend Developer">
+<meta property="og:description" content="Zero-dependency SaaS mahsulotlar quraman: Qalam Studio, CV Builder va boshqalar. Toshkent, UZ.">
+<meta property="og:image" content="https://via.placeholder.com/1200x630/A6491F/F4F0E6?text=Code_X_Root">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#A6491F">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23A6491F'/%3E%3Ctext x='50' y='68' font-size='55' font-family='monospace' font-weight='bold' fill='%23F4F0E6' text-anchor='middle'%3EX%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<script>
+  (function(){ var t = localStorage.getItem('cxr_theme') || 'light'; document.documentElement.setAttribute('data-theme', t); })();
+</script>
+<style>
+  :root{
+    --bg:#F4F0E6; --surface:#FFFFFF; --surface-2:#EDE6D4; --border:#DED4BC;
+    --text:#17140F; --muted:#6E6858;
+    --accent:#A6491F; --accent-2:#1F3A63; --accent-soft:rgba(166,73,31,0.12);
+    --radius:16px;
+  }
+  html[data-theme="dark"]{
+    --bg:#121110; --surface:#1B1916; --surface-2:#221F19; --border:#332F27;
+    --text:#F4F0E6; --muted:#9C9686;
+    --accent:#E0824A; --accent-2:#7C9BD6; --accent-soft:rgba(224,130,74,0.16);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--text);font-family:'Onest',sans-serif;line-height:1.6;overflow-x:hidden;transition:background .3s,color .3s;}
+  .serif{font-family:'Bricolage Grotesque',serif;}
+  .mono{font-family:'DM Mono',monospace;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  button{font:inherit;cursor:pointer;background:none;border:none;color:inherit;}
+  select{font:inherit;}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  @media(max-width:640px){.wrap{padding:0 20px;}}
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ---------- NAV ---------- */
+  nav{position:sticky;top:0;z-index:100;background:color-mix(in srgb, var(--bg) 85%, transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;gap:16px;}
+  .brand{font-family:'DM Mono';font-weight:500;font-size:18px;display:flex;align-items:baseline;gap:8px;}
+  .brand small{font-size:11px;color:var(--muted);font-weight:400;}
+  .nav-links{display:flex;gap:30px;font-size:14px;color:var(--muted);}
+  .nav-links a{transition:color .2s;}
+  .nav-links a:hover{color:var(--text);}
+  .nav-right{display:flex;align-items:center;gap:14px;}
+  .icon-btn{width:38px;height:38px;border-radius:9px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:border-color .2s,background .2s;flex-shrink:0;}
+  .icon-btn:hover{border-color:var(--accent);background:var(--accent-soft);}
+  .icon-btn i{font-size:15px;}
+  .nav-cta{background:var(--text);color:var(--bg);padding:10px 20px;border-radius:8px;font-size:14px;font-weight:600;transition:transform .2s;white-space:nowrap;}
+  .nav-cta:hover{transform:translateY(-1px);}
+  .burger{display:none;}
+  @media(max-width:820px){
+    .nav-links{display:none;}
+    .burger{display:flex;}
+    .nav-cta{display:none;}
+  }
+  /* Mobil to'liq ekran menyu */
+  .mobile-menu{position:fixed;inset:0;background:var(--bg);z-index:200;display:none;flex-direction:column;padding:24px;}
+  .mobile-menu.show{display:flex;}
+  .mobile-menu-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px;}
+  .mobile-menu a{font-family:'Bricolage Grotesque';font-size:28px;font-weight:600;padding:14px 0;border-bottom:1px solid var(--border);}
+  .mobile-menu .nav-cta{display:inline-block;margin-top:24px;text-align:center;}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:80px 0 64px;}
+  .loc-tag{display:inline-flex;align-items:center;gap:10px;font-family:'DM Mono';font-size:12px;color:var(--muted);margin-bottom:36px;}
+  .loc-tag::before{content:'●';color:var(--accent);font-size:9px;}
+  .hero-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:56px;align-items:end;}
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;}}
+  .eyebrow{font-family:'DM Mono';font-size:13px;color:var(--accent);margin-bottom:18px;}
+  .hero h1{font-family:'Bricolage Grotesque';font-weight:800;font-size:clamp(42px,6.4vw,74px);line-height:0.98;letter-spacing:-0.02em;margin-bottom:26px;}
+  .hero h1 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:1.1em;color:var(--accent);letter-spacing:0;}
+  .hero p.lede{font-size:17px;color:var(--muted);max-width:520px;margin-bottom:36px;}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:52px;}
+  .btn-primary{background:var(--text);color:var(--bg);padding:15px 26px;border-radius:9px;font-weight:600;font-size:15px;transition:transform .2s,box-shadow .2s;display:inline-block;border:none;}
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-secondary{border:1px solid var(--border);padding:15px 26px;border-radius:9px;font-weight:600;font-size:15px;transition:border-color .2s,background .2s;display:inline-block;}
+  .btn-secondary:hover{border-color:var(--accent);background:var(--accent-soft);}
+  .hero-stats{display:flex;gap:44px;flex-wrap:wrap;}
+  .stat-num{font-family:'Bricolage Grotesque';font-size:28px;font-weight:600;}
+  .stat-label{font-size:11px;color:var(--muted);font-family:'DM Mono';margin-top:4px;}
+  .portrait{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/5;border:1px dashed var(--border);background:var(--surface-2);display:flex;align-items:center;justify-content:center;}
+  .portrait .ph-label{font-family:'DM Mono';font-size:12px;color:var(--muted);text-align:center;padding:24px;}
+  .portrait .ph-label b{display:block;color:var(--text);font-size:14px;margin-bottom:6px;}
+  .portrait-cap{display:flex;justify-content:space-between;font-family:'DM Mono';font-size:11px;color:var(--muted);margin-top:12px;}
+
+  /* ---------- MARQUEE ---------- */
+  .marquee{border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;padding:18px 0;background:var(--surface);}
+  .marquee-track{display:flex;white-space:nowrap;animation:scroll 26s linear infinite;width:max-content;}
+  .marquee-track span{font-family:'DM Mono';font-size:14px;color:var(--muted);padding:0 20px;display:flex;align-items:center;gap:20px;}
+  .marquee-track span::after{content:'';width:6px;height:6px;background:var(--accent);transform:rotate(45deg);display:block;}
+  @keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  @media(prefers-reduced-motion:reduce){.marquee-track{animation:none;}}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:96px 0;}
+  .section-head{margin-bottom:52px;}
+  .section-num{font-family:'DM Mono';font-size:13px;color:var(--accent);margin-bottom:14px;}
+  .section-head h2{font-family:'Bricolage Grotesque';font-weight:700;font-size:clamp(28px,3.6vw,40px);}
+  .section-head p{color:var(--muted);margin-top:14px;max-width:560px;}
+
+  /* Work */
+  .projects{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+  @media(max-width:820px){.projects{grid-template-columns:1fr;}}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:border-color .3s,transform .3s;}
+  .card:hover{border-color:var(--accent);transform:translateY(-4px);}
+  .card-preview{height:190px;position:relative;border:1px dashed var(--border);margin:14px;border-radius:10px;background:var(--surface-2);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+  .card-preview img{width:100%;height:100%;object-fit:cover;}
+  .card-preview span{font-family:'DM Mono';font-size:11px;color:var(--muted);padding:12px;text-align:center;}
+  .card-body{padding:8px 24px 24px;}
+  .card-body .k{font-family:'DM Mono';font-size:11px;color:var(--accent);margin-bottom:10px;}
+  .card-body h3{font-family:'Bricolage Grotesque';font-weight:700;font-size:21px;margin-bottom:10px;}
+  .card-body p{color:var(--muted);font-size:14px;margin-bottom:14px;}
+  .card-body .result{font-size:13px;color:var(--text);background:var(--accent-soft);border-left:2px solid var(--accent);padding:8px 12px;margin-bottom:16px;border-radius:0 6px 6px 0;}
+  .card-body .result b{color:var(--accent);}
+  .tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px;}
+  .tag-row span{font-family:'DM Mono';font-size:11px;color:var(--muted);background:var(--surface-2);border:1px solid var(--border);padding:4px 9px;border-radius:5px;}
+  .card-link{font-size:13px;font-weight:600;color:var(--accent);}
+
+  /* About */
+  .about-grid{display:grid;grid-template-columns:0.8fr 1.2fr;gap:56px;align-items:start;}
+  @media(max-width:860px){.about-grid{grid-template-columns:1fr;}}
+  .about-portrait{border-radius:var(--radius);border:1px dashed var(--border);aspect-ratio:1/1;background:var(--surface-2);display:flex;align-items:center;justify-content:center;}
+  .about-portrait span{font-family:'DM Mono';font-size:12px;color:var(--muted);text-align:center;padding:20px;}
+  .about-text p{font-size:17px;margin-bottom:20px;max-width:600px;}
+  .about-text p.muted{color:var(--muted);font-size:15px;}
+  .skill-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px;}
+  .skill-tags span{font-family:'DM Mono';font-size:12px;padding:8px 13px;border-radius:7px;background:var(--surface);border:1px solid var(--border);}
+
+  /* Services */
+  .services{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+  @media(max-width:760px){.services{grid-template-columns:1fr;}}
+  .svc{background:var(--surface);padding:32px;transition:background .25s;}
+  .svc:hover{background:var(--surface-2);}
+  .svc .n{font-family:'DM Mono';font-size:12px;color:var(--accent);margin-bottom:12px;}
+  .svc h3{font-family:'Bricolage Grotesque';font-weight:700;font-size:19px;margin-bottom:10px;}
+  .svc p{color:var(--muted);font-size:14px;margin-bottom:16px;}
+  .svc .tag-row span{font-size:10.5px;}
+
+  /* Pricing */
+  .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media(max-width:900px){.pricing{grid-template-columns:1fr;}}
+  .price-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:32px;display:flex;flex-direction:column;transition:border-color .3s,transform .3s;}
+  .price-card:hover{border-color:var(--accent);transform:translateY(-4px);}
+  .price-card.featured{border-color:var(--accent);position:relative;}
+  .price-card.featured::before{content:'Tavsiya etiladi';position:absolute;top:-13px;left:32px;background:var(--accent);color:#fff;font-family:'DM Mono';font-size:11px;padding:4px 10px;border-radius:6px;}
+  .price-card h3{font-family:'Bricolage Grotesque';font-size:20px;font-weight:700;margin-bottom:8px;}
+  .price-card .price{font-family:'Bricolage Grotesque';font-size:22px;color:var(--accent);margin-bottom:16px;}
+  .price-card .price small{font-family:'Onest';font-size:13px;color:var(--muted);font-weight:400;}
+  .price-card ul{list-style:none;margin-bottom:24px;flex:1;}
+  .price-card li{font-size:14px;color:var(--muted);padding:7px 0;border-bottom:1px solid var(--border);display:flex;gap:8px;}
+  .price-card li::before{content:'\f00c';font-family:'Font Awesome 7 Free';font-weight:900;color:var(--accent);font-size:12px;padding-top:3px;}
+
+  /* FAQ */
+  .faq-item{border-bottom:1px solid var(--border);}
+  .faq-q{width:100%;text-align:left;padding:22px 0;display:flex;justify-content:space-between;align-items:center;font-family:'Bricolage Grotesque';font-size:17px;font-weight:600;}
+  .faq-q .plus{font-size:20px;color:var(--accent);transition:transform .3s;flex-shrink:0;margin-left:16px;}
+  .faq-item.open .plus{transform:rotate(45deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+  .faq-a p{color:var(--muted);font-size:14.5px;padding-bottom:22px;max-width:640px;}
+  .faq-note{font-size:12px;color:var(--muted);background:var(--surface-2);border:1px solid var(--border);border-radius:9px;padding:12px 14px;margin-top:20px;}
+
+  /* Order form */
+  .order-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:40px;}
+  .order-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:640px){.order-grid{grid-template-columns:1fr;}}
+  .order-grid .full{grid-column:1/-1;}
+  .field label{display:block;font-family:'DM Mono';font-size:11px;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em;}
+  .field input,.field textarea,.field select{width:100%;padding:12px 14px;border-radius:9px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-family:'Onest';font-size:14px;}
+  .field textarea{resize:vertical;min-height:90px;}
+  .field{margin-bottom:6px;}
+
+  /* Contact */
+  .contact-box{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:70px 48px;text-align:center;position:relative;overflow:hidden;}
+  .contact-box::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 25% 15%, var(--accent-soft), transparent 60%);}
+  .contact-box *{position:relative;}
+  .contact-tag{font-family:'DM Mono';font-size:12px;color:var(--accent);margin-bottom:18px;}
+  .contact-box h2{font-family:'Bricolage Grotesque';font-weight:700;font-size:clamp(28px,4.4vw,44px);margin-bottom:16px;}
+  .contact-box p{color:var(--muted);margin-bottom:34px;max-width:480px;margin-left:auto;margin-right:auto;}
+  .contact-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:34px;}
+  .contact-meta{display:flex;justify-content:center;gap:26px;flex-wrap:wrap;font-family:'DM Mono';font-size:12px;color:var(--muted);}
+
+  footer{padding:40px 0;border-top:1px solid var(--border);}
+  .footer-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;margin-bottom:30px;}
+  .footer-col h4{font-family:'DM Mono';font-size:11px;color:var(--muted);margin-bottom:14px;text-transform:uppercase;letter-spacing:.06em;}
+  .footer-col a,.footer-col span{display:block;font-size:14px;margin-bottom:8px;transition:color .2s;}
+  .footer-col a:hover{color:var(--accent);}
+  .footer-bottom{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted);flex-wrap:wrap;gap:12px;padding-top:24px;border-top:1px solid var(--border);}
+  .footer-admin-link{font-family:'DM Mono';font-size:11px;color:var(--muted);opacity:.6;transition:opacity .2s;}
+  .footer-admin-link:hover{opacity:1;color:var(--accent);}
+
+  /* ---------- ADMIN MODAL ---------- */
+  .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.55);backdrop-filter:blur(4px);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px;}
+  .modal-overlay.show{display:flex;}
+  .modal{background:var(--bg);border:1px solid var(--border);border-radius:20px;max-width:640px;width:100%;max-height:88vh;overflow-y:auto;padding:36px;}
+  .modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;}
+  .modal-head h3{font-family:'Bricolage Grotesque';font-size:22px;font-weight:700;}
+  .modal-close{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:18px;}
+  .modal-close:hover{border-color:var(--accent);}
+  .field input,.field textarea{margin-bottom:0;}
+  .field{margin-bottom:16px;}
+  .field input[type="file"]{padding:8px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media(max-width:520px){.form-row{grid-template-columns:1fr;}}
+  .admin-note{font-size:12px;color:var(--muted);background:var(--surface-2);border:1px solid var(--border);border-radius:9px;padding:12px 14px;margin-bottom:20px;}
+  .admin-tabs{display:flex;gap:8px;margin-bottom:20px;border-bottom:1px solid var(--border);}
+  .admin-tab{padding:10px 16px;font-size:13px;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;}
+  .admin-tab.active{color:var(--accent);border-color:var(--accent);}
+  .admin-list{margin-top:28px;border-top:1px solid var(--border);padding-top:20px;}
+  .admin-item{display:flex;gap:12px;align-items:center;padding:10px;border:1px solid var(--border);border-radius:10px;margin-bottom:10px;}
+  .admin-item .thumb{width:44px;height:44px;border-radius:7px;background:var(--surface-2);object-fit:cover;flex-shrink:0;}
+  .admin-item .info{flex:1;min-width:0;}
+  .admin-item .info b{display:block;font-size:14px;}
+  .admin-item .info span{font-size:12px;color:var(--muted);}
+  .admin-item .acts{display:flex;gap:6px;}
+  .mini-btn{font-size:12px;padding:7px 11px;border-radius:7px;border:1px solid var(--border);}
+  .mini-btn:hover{border-color:var(--accent);color:var(--accent);}
+  .mini-btn.danger:hover{border-color:#C0392B;color:#C0392B;}
+  .success-msg{color:#2E7D32;font-size:13px;margin-top:10px;display:none;}
+  .error-msg{color:#C0392B;font-size:13px;margin-top:10px;display:none;}
+
+  .btn-primary i,.btn-secondary i,.nav-cta i{margin-left:8px;font-size:.85em;}
+  .footer-col a i{width:22px;color:var(--accent);}
+  .contact-meta i{color:var(--accent);margin-right:6px;}
+  .svc .n i{margin-right:8px;font-size:14px;}
+  .faq-note i{color:var(--accent);margin-right:6px;}
+  .faq-q .plus{font-size:15px;}
+  
+  /* ====== ANIMATSIYA, HOVER, ACTIVE ====== */
+  @keyframes rise{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:none;}}
+  @keyframes line{to{transform:scaleX(1);}}
+  @keyframes menuIn{from{opacity:0;transform:translateY(-12px);}to{opacity:1;transform:none;}}
+  @keyframes pop{from{opacity:0;transform:translateY(16px) scale(.96);}to{opacity:1;transform:none;}}
+  @keyframes pulseDot{0%,100%{box-shadow:0 0 0 0 var(--accent-soft);}50%{box-shadow:0 0 0 7px transparent;}}
+
+  /* Scroll progress + to-top */
+  .progress{position:fixed;top:0;left:0;height:3px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;z-index:300;pointer-events:none;}
+  .to-top{position:fixed;right:20px;bottom:20px;width:46px;height:46px;border-radius:50%;background:var(--text);color:var(--bg);display:flex;align-items:center;justify-content:center;z-index:90;opacity:0;transform:translateY(16px) scale(.8);pointer-events:none;transition:opacity .3s,transform .3s;box-shadow:0 10px 24px -8px rgba(0,0,0,.4);}
+  .to-top.show{opacity:1;transform:none;pointer-events:auto;}
+  .to-top:hover{transform:translateY(-4px);}
+  .to-top:active{transform:scale(.9);}
+
+  /* Nav */
+  nav{transition:box-shadow .3s,background .3s;}
+  nav .wrap{transition:height .3s;}
+  nav.scrolled .wrap{height:64px;}
+  nav.scrolled{box-shadow:0 10px 30px -18px rgba(0,0,0,.35);}
+  .nav-links a{position:relative;padding:4px 0;}
+  .nav-links a::after{content:'';position:absolute;left:0;bottom:-4px;height:2px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+  .nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);}
+  .nav-links a.active{color:var(--text);}
+  .brand{transition:letter-spacing .3s;}
+  .brand:hover{letter-spacing:.04em;}
+  .mobile-menu.show{animation:menuIn .3s ease;}
+  .mobile-menu.show a{animation:rise .5s backwards;}
+  .mobile-menu.show a:nth-of-type(2){animation-delay:.05s;}
+  .mobile-menu.show a:nth-of-type(3){animation-delay:.1s;}
+  .mobile-menu.show a:nth-of-type(4){animation-delay:.15s;}
+  .mobile-menu.show a:nth-of-type(5){animation-delay:.2s;}
+  .mobile-menu a{transition:color .2s,padding-left .25s;}
+  .mobile-menu a:hover{color:var(--accent);padding-left:10px;}
+
+  /* Buttons */
+  .btn-primary,.btn-secondary,.nav-cta,.icon-btn,.mini-btn,.footer-admin-link{transition:transform .2s,box-shadow .25s,background .2s,border-color .2s,color .2s;}
+  .btn-primary:hover,.nav-cta:hover{box-shadow:0 14px 28px -12px rgba(0,0,0,.45);}
+  .btn-primary:active,.nav-cta:active,.btn-secondary:active{transform:translateY(0) scale(.97);box-shadow:none;}
+  .btn-primary i,.btn-secondary i,.nav-cta i,.card-link i{transition:transform .25s;}
+  .btn-primary:hover i,.btn-secondary:hover i,.nav-cta:hover i,.card-link:hover i{transform:translateX(5px);}
+  .icon-btn:active{transform:scale(.9);}
+  .icon-btn:hover i{transform:rotate(12deg);}
+  .icon-btn i{transition:transform .25s;}
+  .mini-btn:active{transform:scale(.94);}
+
+  /* Hero kirish animatsiyasi */
+  .loc-tag,.hero .eyebrow,.hero h1,.hero p.lede,.hero-actions,.hero-stats,.hero .portrait,.portrait-cap{animation:rise .85s cubic-bezier(.2,.7,.2,1) backwards;}
+  .loc-tag{animation-delay:.05s;}
+  .hero .eyebrow{animation-delay:.12s;}
+  .hero h1{animation-delay:.2s;}
+  .hero p.lede{animation-delay:.32s;}
+  .hero-actions{animation-delay:.42s;}
+  .hero-stats{animation-delay:.52s;}
+  .hero .portrait{animation-delay:.3s;transition:transform .25s ease-out,box-shadow .3s;}
+  .portrait-cap{animation-delay:.5s;}
+  .hero .portrait:hover{box-shadow:0 30px 60px -30px rgba(0,0,0,.5);}
+  .hero h1 em{position:relative;display:inline-block;}
+  .hero h1 em::after{content:'';position:absolute;left:0;right:0;bottom:.08em;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;animation:line .8s .95s cubic-bezier(.2,.7,.2,1) forwards;}
+  .loc-tag::before{animation:pulseDot 2.2s infinite;border-radius:50%;}
+  .stat-num{transition:color .25s;}
+  .hero-stats > div:hover .stat-num{color:var(--accent);}
+
+  /* Marquee */
+  .marquee:hover .marquee-track{animation-play-state:paused;}
+  .marquee-track span{transition:color .2s;}
+  .marquee-track span:hover{color:var(--text);}
+
+  /* Scroll bilan ketma-ket chiqish (stagger) */
+  .reveal.stagger{opacity:1;transform:none;transition:none;}
+  .stagger > *{opacity:0;}
+  .stagger.in > *{opacity:1;animation:rise .65s cubic-bezier(.2,.7,.2,1) backwards;animation-delay:calc(var(--i,0) * 90ms);}
+
+  /* Kartalar */
+  .card{transition:border-color .3s,transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s;}
+  .card:hover{box-shadow:0 22px 44px -22px rgba(0,0,0,.4);}
+  .card:active{transform:translateY(-1px) scale(.99);}
+  .card-preview img{transition:transform .6s cubic-bezier(.2,.7,.2,1);}
+  .card:hover .card-preview img{transform:scale(1.07);}
+  .card-preview{transition:border-color .3s;}
+  .card:hover .card-preview{border-color:var(--accent);}
+  .card-link{display:inline-block;}
+  .tag-row span{transition:border-color .2s,color .2s,transform .2s;}
+  .tag-row span:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);}
+  .skill-tags span{transition:border-color .2s,color .2s,transform .2s,background .2s;}
+  .skill-tags span:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-3px);background:var(--accent-soft);}
+
+  /* Xizmatlar */
+  .svc{transition:background .25s,transform .25s;}
+  .svc .n i{display:inline-block;transition:transform .3s;}
+  .svc:hover .n i{transform:translateY(-3px) rotate(-10deg) scale(1.15);}
+  .svc h3{transition:color .25s;}
+  .svc:hover h3{color:var(--accent);}
+  .svc:active{transform:scale(.99);}
+
+  /* Narxlar */
+  .price-card{transition:border-color .3s,transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s;}
+  .price-card:hover{box-shadow:0 22px 44px -22px rgba(0,0,0,.4);}
+  .price-card:active{transform:translateY(-1px) scale(.99);}
+  .price-card li{transition:padding-left .2s,color .2s;}
+  .price-card li:hover{padding-left:6px;color:var(--text);}
+
+  /* FAQ */
+  .faq-q{transition:color .2s,padding-left .25s;}
+  .faq-q:hover{color:var(--accent);padding-left:8px;}
+  .faq-q:active{opacity:.7;}
+  .faq-item.open .faq-q{color:var(--accent);}
+
+  /* Formalar */
+  .field input,.field textarea,.field select{transition:border-color .2s,box-shadow .2s;}
+  .field input:hover,.field textarea:hover,.field select:hover{border-color:var(--muted);}
+  .field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft);}
+  .order-box,.contact-box{transition:opacity .7s ease,transform .7s ease,border-color .3s,box-shadow .35s;}
+  .order-box:hover,.contact-box:hover{border-color:var(--accent);}
+
+  /* Footer */
+  .footer-col a{transition:color .2s,transform .2s;}
+  .footer-col a:hover{transform:translateX(5px);}
+  .footer-col a:active{opacity:.6;}
+  .contact-meta span{transition:color .2s;}
+  .contact-meta span:hover{color:var(--text);}
+
+  /* Admin modal animatsiyasi */
+  .modal-overlay.show{animation:menuIn .25s ease;}
+  .modal-overlay.show .modal{animation:pop .35s cubic-bezier(.2,.7,.2,1);}
+  .modal-close{transition:transform .2s,border-color .2s;}
+  .modal-close:hover{transform:rotate(90deg);}
+  .modal-close:active{transform:rotate(90deg) scale(.9);}
+  .admin-item{transition:border-color .2s,transform .2s;animation:rise .4s backwards;}
+  .admin-item:hover{border-color:var(--accent);transform:translateX(4px);}
+  .admin-tab{transition:color .2s,border-color .2s;}
+  .admin-tab:hover{color:var(--text);}
+  
+  @media(prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important;}}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">Code_X_Root <small>/ dev</small></div>
+    <div class="nav-links">
+      <a href="#work">Ishlar</a>
+      <a href="#pricing">Narxlar</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Aloqa</a>
+    </div>
+    <div class="nav-right">
+      <button class="icon-btn" id="themeToggle" aria-label="Mode almashtirish" title="Dark / Light mode"><i class="fa-solid fa-moon"></i></button>
+      <a href="https://t.me/Code_X_Root" target="_blank" class="nav-cta">Yozish</a>
+      <button class="icon-btn burger" id="burgerBtn" aria-label="Menyu"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-top">
+    <div class="brand">Code_X_Root</div>
+    <button class="icon-btn" id="closeMobileMenu"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <a href="#work">Ishlar</a>
+  <a href="#pricing">Narxlar</a>
+  <a href="#faq">FAQ</a>
+  <a href="#about">Men haqimda</a>
+  <a href="#contact">Aloqa</a>
+  <a href="https://t.me/Code_X_Root" target="_blank" class="nav-cta">Telegram'da yozish<i class="fa-solid fa-arrow-right"></i></a>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="loc-tag mono">Toshkent, UZ — 41.29°N 69.24°E</div>
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">(01) CODE_X_ROOT — Frontend Studio</div>
+        <h1>Kod.<br><em>Va</em> natija.</h1>
+        <p class="lede">Men Abdulloh, ya'ni Code_X_Root — Toshkentlik Senior Frontend / Full-Stack Developer. Og'ir framework va build-tool'larsiz, bitta fayl ichida to'liq ishlaydigan, kommersiya darajasidagi SaaS mahsulotlar quraman.</p>
+        <div class="hero-actions">
+          <a href="#order" class="btn-primary">Loyiha buyurtma qilish<i class="fa-solid fa-arrow-right"></i></a>
+          <a href="#work" class="btn-secondary">Ishlarni ko'rish<i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="hero-stats">
+          <div><div class="stat-num" id="statProjects">2</div><div class="stat-label">LOYIHA PORTFOLIODA</div></div>
+          <div><div class="stat-num">0</div><div class="stat-label">TASHQI DEPENDENCY</div></div>
+          <div><div class="stat-num">24/7</div><div class="stat-label">TELEGRAM'DA ALOQA</div></div>
+        </div>
+      </div>
+      <div>
+        <!-- RASM: shu joyga o'z portretingizni qo'ying. MIJOZGA YUBORISHDAN OLDIN BU RASMNI ALMASHTIRING -->
+        <div class="portrait"><div class="ph-label"><b>Portret</b>shu yerga rasm qo'ying<br>(4:5, yuqori sifat)</div></div>
+        <div class="portrait-cap"><span>●2026 · Portret</span><span>Toshkent · UZ · GMT+5</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Frontend Development</span><span>JavaScript</span><span>Fabric.js</span><span>UI / UX</span><span>SaaS mahsulotlar</span><span>Mobile-first UX</span><span>Full-Stack hamkorlik</span><span>Telegram Botlar</span><span>Python / aiogram</span><span>Claude Code</span>
+    <span>Frontend Development</span><span>JavaScript</span><span>Fabric.js</span><span>UI / UX</span><span>SaaS mahsulotlar</span><span>Mobile-first UX</span><span>Full-Stack hamkorlik</span><span>Telegram Botlar</span><span>Python / aiogram</span><span>Claude Code</span>
+  </div>
+</div>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-num">(02) Tanlangan ishlar</div>
+      <h2>Oxirgi loyihalar</h2>
+      <p>Har biri — nol tashqi bog'liqlik bilan qurilgan, lekin funksionallik jihatidan tijorat mahsulotlariga teng. <strong>Mijozga yuborishdan oldin skrinshotlarni real rasmlarga almashtiring.</strong></p>
+    </div>
+    <div class="projects reveal stagger" id="projectsGrid"></div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-num">(03) Narxlash</div>
+      <h2>Loyiha paketlari</h2>
+      <p>Har bir loyiha individual — narx hajm va muddatga qarab belgilanadi. Quyida taxminiy yo'nalish.</p>
+    </div>
+    <div class="pricing reveal stagger">
+      <div class="price-card">
+        <h3>Landing / Vizitka</h3>
+        <div class="price">Muhokama asosida<br><small>1 sahifa, tez ishga tushirish</small></div>
+        <ul>
+          <li>Bitta fayl, zero-dependency</li>
+          <li>To'liq responsive dizayn</li>
+          <li>Dark/Light mode</li>
+          <li>3-5 kunda tayyor</li>
+        </ul>
+        <a href="#order" class="btn-secondary" style="text-align:center;">Buyurtma berish</a>
+      </div>
+      <div class="price-card featured">
+        <h3>SaaS / Web-ilova</h3>
+        <div class="price">Muhokama asosida<br><small>Ko'p funksiyali mahsulot</small></div>
+        <ul>
+          <li>Qalam Studio darajasidagi funksionallik</li>
+          <li>LocalStorage / State boshqaruvi</li>
+          <li>Mobile-first UX (tab bar, bottom-sheet)</li>
+          <li>2-4 haftada tayyor</li>
+        </ul>
+        <a href="#order" class="btn-primary" style="text-align:center;">Buyurtma berish</a>
+      </div>
+      <div class="price-card">
+        <h3>Full-Stack loyiha</h3>
+        <div class="price">Muhokama asosida<br><small>Frontend + Backend jamoa</small></div>
+        <ul>
+          <li>CRM / E-commerce / Blog</li>
+          <li>Backend hamkor bilan integratsiya</li>
+          <li>API asosida real ma'lumotlar</li>
+          <li>Muddat loyihaga qarab</li>
+        </ul>
+        <a href="#order" class="btn-secondary" style="text-align:center;">Buyurtma berish</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head reveal"><div class="section-num">(04) Men haqimda</div><h2>Bitta odamdan — g'oyadan tayyor mahsulotgacha</h2></div>
+    <div class="about-grid">
+      <div class="reveal">
+        <!-- RASM: ikkinchi portret / ish jarayoni rasmi shu yerga -->
+        <div class="about-portrait"><span>Rasm shu yerga<br>(1:1 kvadrat)</span></div>
+      </div>
+      <div class="about-text reveal">
+        <p>Frontend yo'nalishida ishlayman, lekin g'oyani boshidan oxirigacha o'zim olib boraman: dizayn, kod, va foydalanuvchi tajribasi — hammasi bitta qo'ldan chiqadi. Har bir loyihani build-tool va og'ir framework'larsiz, bitta HTML fayl ichida, lekin tijorat mahsulotiga xos sifat bilan quraman.</p>
+        <p class="muted">Hozirda Xumoyuddin ismli backend dasturchi bilan hamkorlikda to'liq full-stack SaaS loyihalar ustida ishlayapman — CRM, e-commerce va blog frontendlari shular jumlasidan.</p>
+        <div class="skill-tags">
+          <span>JavaScript (Vanilla)</span><span>HTML5 / CSS3</span><span>Fabric.js</span>
+          <span>LocalStorage / IndexedDB</span><span>Responsive UX</span><span>Git</span><span>REST API</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head reveal"><div class="section-num">(05) Xizmatlar</div><h2>Nima qilib beraman</h2></div>
+    <div class="services reveal stagger">
+      <div class="svc"><div class="n"><i class="fa-solid fa-code"></i>01</div><h3>Frontend & UI</h3><p>Single-file, zero-dependency web ilovalar. Tez, yengil va mukammal responsive — build jarayonisiz.</p><div class="tag-row"><span>HTML/CSS/JS</span><span>Responsive</span></div></div>
+      <div class="svc"><div class="n"><i class="fa-solid fa-layer-group"></i>02</div><h3>SaaS mahsulotlar</h3><p>Canva/PicsArt darajasidagi to'liq ishlaydigan tool'lar: rasm muharrirlari, generatorlar, dashboard'lar.</p><div class="tag-row"><span>Fabric.js</span><span>Canvas API</span></div></div>
+      <div class="svc"><div class="n"><i class="fa-solid fa-handshake"></i>03</div><h3>Full-stack hamkorlik</h3><p>Backend jamoa bilan birga — CRM, e-commerce va blog loyihalari uchun to'liq frontend yetkazib berish.</p><div class="tag-row"><span>API integratsiya</span><span>Team work</span></div></div>
+      <div class="svc"><div class="n"><i class="fa-brands fa-telegram"></i>04</div><h3>Telegram botlar</h3><p>Python va aiogram asosida: sotuv botlari, to'lov integratsiyasi, admin panel, Railway'da joylash.</p><div class="tag-row"><span>Python</span><span>aiogram</span><span>Bot API</span></div></div>
+      <div class="svc"><div class="n"><i class="fa-solid fa-mobile-screen"></i>05</div><h3>Mobile-first UX</h3><p>Native ilova hissini beruvchi interfeys: tab bar navigatsiya, bottom-sheet, gesture asosidagi boshqaruv.</p><div class="tag-row"><span>Mobile UX</span><span>PWA</span></div></div>
+      <div class="svc"><div class="n"><i class="fa-solid fa-rocket"></i>06</div><h3>Joylash va qo'llab-quvvatlash</h3><p>Loyihani Railway yoki Netlify'ga joylash, domen ulash va ishga tushgandan keyin tuzatishlar bo'yicha yordam.</p><div class="tag-row"><span>Railway</span><span>Netlify</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head reveal"><div class="section-num">(06) Savol-javob</div><h2>Ko'p beriladigan savollar</h2></div>
+    <div class="reveal stagger" id="faqList">
+      <div class="faq-item">
+        <button class="faq-q">Necha kunda loyiha tayyor bo'ladi?<span class="plus"><i class="fa-solid fa-plus"></i></span></button>
+        <div class="faq-a"><p>Oddiy landing/vizitka sahifasi — 3-5 kun. SaaS/web-ilova — 2-4 hafta. Aniq muddat loyiha hajmi bo'yicha suhbatdan so'ng belgilanadi.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Narx qanday belgilanadi?<span class="plus"><i class="fa-solid fa-plus"></i></span></button>
+        <div class="faq-a"><p>Har bir loyiha individual — funksionallik hajmi, dizayn murakkabligi va muddatga qarab. Buyurtma formasini to'ldirsangiz, tez orada aniq narx bilan qaytaraman.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">To'lov qanday amalga oshiriladi?<span class="plus"><i class="fa-solid fa-plus"></i></span></button>
+        <div class="faq-a"><p>Odatda ish boshlanishidan oldin bir qism, loyiha topshirilgach qolgan qismi. Aniq shartlar suhbat davomida kelishiladi.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Tuzatishlar (revision) kiritilishimi?<span class="plus"><i class="fa-solid fa-plus"></i></span></button>
+        <div class="faq-a"><p>Ha, kelishilgan doirada tuzatishlar kiritiladi. Loyiha boshlanishidan oldin bu shartlar aniq belgilanadi.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Loyiha manba kodi (source code) beriladimi?<span class="plus"><i class="fa-solid fa-plus"></i></span></button>
+        <div class="faq-a"><p>Ha, loyiha to'liq topshirilgach, manba kodi mijozga taqdim etiladi.</p></div>
+      </div>
+    </div>
+    <p class="faq-note reveal"><i class="fa-solid fa-triangle-exclamation"></i>Diqqat, Abdulloh: bu javoblar — namuna. Haqiqiy to'lov, muddat va tuzatish siyosatingizni bilib, matnni shunga moslab tahrirlang — mijozlarga noaniq va'da bermang.</p>
+  </div>
+</section>
+
+<section id="order">
+  <div class="wrap">
+    <div class="section-head reveal"><div class="section-num">(07) Buyurtma</div><h2>Loyihangizni boshlaylik</h2><p>Formani to'ldiring — tugmani bosganingizda Telegram ochiladi va xabar tayyor bo'ladi, faqat "Yuborish" tugmasini bosasiz.</p></div>
+    <div class="order-box reveal">
+      <div class="order-grid">
+        <div class="field"><label>Ismingiz</label><input type="text" id="oName" placeholder="Ismingiz"></div>
+        <div class="field"><label>Aloqa (Telegram/Tel)</label><input type="text" id="oContact" placeholder="@username yoki telefon"></div>
+        <div class="field"><label>Loyiha turi</label>
+          <select id="oType">
+            <option>Landing / Vizitka sahifa</option>
+            <option>SaaS / Web-ilova</option>
+            <option>E-commerce</option>
+            <option>CRM / Dashboard</option>
+            <option>Boshqa</option>
+          </select>
+        </div>
+        <div class="field"><label>Taxminiy byudjet</label>
+          <select id="oBudget">
+            <option>Hali aniq emas</option>
+            <option>Kichik byudjet</option>
+            <option>O'rtacha byudjet</option>
+            <option>Katta loyiha</option>
+          </select>
+        </div>
+        <div class="field full"><label>Loyiha haqida qisqacha</label><textarea id="oDesc" placeholder="Nima qurmoqchisiz, qanday funksiyalar kerak..."></textarea></div>
+      </div>
+      <button class="btn-primary" id="sendOrderBtn" style="margin-top:16px;">Telegram orqali yuborish<i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-box reveal">
+      <div class="contact-tag">Salom · Loyihalarga ochiq — 2026</div>
+      <h2>G'oyang bormi? Gaplashamiz.</h2>
+      <p>Telegram'da yoz — odatda tez orada javob qaytaraman.</p>
+      <div class="contact-links">
+        <a href="https://t.me/Code_X_Root" target="_blank" class="btn-primary">@Code_X_Root'ga yozish<i class="fa-solid fa-arrow-right"></i></a>
+        <a href="https://t.me/Dastur_Pro_Official" target="_blank" class="btn-secondary">Telegram kanal</a>
+      </div>
+      <div class="contact-meta mono">
+        <span><i class="fa-solid fa-phone"></i>+998 93 699 69 84</span>
+        <span><i class="fa-solid fa-location-dot"></i>Toshkent · UZ · GMT+5</span>
+        <span><i class="fa-solid fa-bolt"></i>Odatda tez javob</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Code_X_Root</h4>
+        <a href="#work">Ishlar</a><a href="#pricing">Narxlar</a><a href="#faq">FAQ</a><a href="#contact">Aloqa</a>
+      </div>
+      <div class="footer-col">
+        <h4>Ijtimoiy</h4>
+        <a href="https://t.me/Code_X_Root" target="_blank"><i class="fa-brands fa-telegram"></i>Telegram (admin)</a>
+        <a href="https://t.me/Dastur_Pro_Official" target="_blank"><i class="fa-brands fa-telegram"></i>Telegram kanal</a>
+        <a href="https://www.instagram.com/dastur_pro_official" target="_blank"><i class="fa-brands fa-instagram"></i>Instagram</a>
+        <a href="https://github.com/Developer6984" target="_blank"><i class="fa-brands fa-github"></i>GitHub</a>
+      </div>
+      <div class="footer-col">
+        <h4>Meta</h4>
+        <span>Toshkent · UZ</span><span>GMT+5</span><span>+998 93 699 69 84</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Abdulloh — Code_X_Root</span>
+      <button class="footer-admin-link mono" id="openAdmin"><i class="fa-solid fa-gear"></i> admin</button>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ ADMIN MODAL ============ -->
+<div class="modal-overlay" id="adminOverlay">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="adminTitle">Admin kirish</h3>
+      <button class="modal-close" id="closeAdmin"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <div id="loginView">
+      <p class="admin-note">Bu panel faqat sizga — loyihalaringizni qo'shish/o'chirish va parolni boshqarish uchun.</p>
+      <div class="field"><label>Parol</label><input type="password" id="adminPassInput" placeholder="••••••••"></div>
+      <button class="btn-primary" id="loginBtn" style="width:100%;text-align:center;">Kirish</button>
+      <p id="loginError" class="error-msg" style="display:none;">Parol noto'g'ri.</p>
+      <p class="admin-note" style="margin-top:16px;">Birinchi marta kiryapsizmi? Standart parol: <span class="mono">SeniorCode2026</span> — kirgach albatta "Sozlamalar"dan o'zgartiring.</p>
+    </div>
+
+    <div id="dashboardView" style="display:none;">
+      <div class="admin-tabs">
+        <button class="admin-tab active" data-tab="projects">Loyihalar</button>
+        <button class="admin-tab" data-tab="settings">Sozlamalar</button>
+      </div>
+
+      <div id="tabProjects">
+        <p class="admin-note"><b>Muhim:</b> bu yerda qo'shganlaringiz faqat shu brauzerda ko'rinadi (qoralama). Mijozlar ko'rishi uchun pastdagi "Kodga eksport" tugmasini bosing va natijani faylga <span class="mono">PUBLISHED_PROJECTS</span> o'rniga qo'yib, saytni qayta joylang.</p>
+        <input type="hidden" id="editId">
+        <div class="field"><label>Loyiha nomi</label><input type="text" id="pTitle" placeholder="Masalan: Qalam Studio"></div>
+        <div class="field"><label>Tavsif</label><textarea id="pDesc" placeholder="Loyiha haqida qisqacha..."></textarea></div>
+        <div class="field"><label>Natija (ixtiyoriy, lekin tavsiya etiladi)</label><input type="text" id="pResult" placeholder="Masalan: Foydalanuvchi 5 daqiqada tayyor CV oladi"></div>
+        <div class="form-row">
+          <div class="field"><label>Kategoriya / yil</label><input type="text" id="pCat" placeholder="SaaS · 2026"></div>
+          <div class="field"><label>Havola (URL)</label><input type="text" id="pLink" placeholder="https://..."></div>
+        </div>
+        <div class="field"><label>Teglar (vergul bilan)</label><input type="text" id="pTags" placeholder="Fabric.js, Canvas API, Mobile UX"></div>
+        <div class="field"><label>Rasm (skrinshot) — fayl yoki URL</label><input type="file" id="pImage" accept="image/*" style="margin-bottom:8px;"><input type="text" id="pImageUrl" placeholder="yoki rasm havolasi: https://... (eksport uchun tavsiya etiladi)"></div>
+        <div style="display:flex;gap:10px;">
+          <button class="btn-primary" id="saveProjectBtn">Saqlash</button>
+          <button class="btn-secondary" id="cancelEditBtn" style="display:none;">Bekor qilish</button>
+        </div>
+        <div class="admin-list" id="adminList"></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;">
+          <button class="mini-btn" id="exportBtn">Kodga eksport (nusxalash)</button>
+          <button class="mini-btn danger" id="resetDraftBtn">Qoralamani tozalash</button>
+        </div>
+        <p id="exportMsg" class="success-msg"></p>
+      </div>
+
+      <div id="tabSettings" style="display:none;">
+        <p class="admin-note">Parolni shu yerdan o'zgartirishingiz mumkin. Eslatma: bu parol faqat shu brauzerda saqlanadi (backend yo'q), shuning uchun boshqa qurilmada eski/standart parol ishlaydi.</p>
+        <div class="field"><label>Joriy parol</label><input type="password" id="curPass"></div>
+        <div class="field"><label>Yangi parol</label><input type="password" id="newPass"></div>
+        <div class="field"><label>Yangi parolni takrorlang</label><input type="password" id="newPass2"></div>
+        <button class="btn-primary" id="changePassBtn">Parolni yangilash</button>
+        <p id="passSuccess" class="success-msg">Parol muvaffaqiyatli yangilandi.</p>
+        <p id="passError" class="error-msg">Xatolik: maydonlarni tekshiring.</p>
+      </div>
+
+      <div style="margin-top:24px;border-top:1px solid var(--border);padding-top:16px;">
+        <button class="mini-btn" id="logoutBtn">Chiqish</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="to-top" id="toTop" aria-label="Tepaga"><i class="fa-solid fa-arrow-up"></i></button>
+
+<script>
+/* ============ THEME ============ */
+const root = document.documentElement;
+const themeToggle = document.getElementById('themeToggle');
+function applyThemeIcon(){
+  const dark = root.getAttribute('data-theme') === 'dark';
+  themeToggle.innerHTML = dark ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+}
+applyThemeIcon();
+themeToggle.addEventListener('click', ()=>{
+  const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  root.setAttribute('data-theme', next);
+  localStorage.setItem('cxr_theme', next);
+  applyThemeIcon();
+  themeToggle.firstElementChild.animate([{transform:'rotate(-90deg) scale(.4)',opacity:0},{transform:'none',opacity:1}],{duration:380,easing:'cubic-bezier(.2,.7,.2,1)'});
+});
+
+/* ============ MOBILE MENU ============ */
+const burgerBtn = document.getElementById('burgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+burgerBtn.addEventListener('click', ()=> mobileMenu.classList.add('show'));
+document.getElementById('closeMobileMenu').addEventListener('click', ()=> mobileMenu.classList.remove('show'));
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', ()=> mobileMenu.classList.remove('show')));
+
+/* ============ PROJECTS (CRUD via localStorage) ============ */
+const STORAGE_KEY = 'cxr_projects_draft';
+/* PUBLISHED_PROJECTS — barcha mijozlar shu ro'yxatni ko'radi.
+   Admin paneldan loyiha qo'shgach "Kodga eksport" tugmasini bosing,
+   nusxani shu massiv o'rniga qo'yib, saytni qayta joylang (deploy). */
+const PUBLISHED_PROJECTS = [
+  { id:'seed-1', title:'Qalam Studio', cat:'SaaS · Image Editor · 2026',
+    desc:"Canva / PicsArt darajasidagi rasm muharriri. Fabric.js asosida, mobil qurilmalar uchun Tab Bar navigatsiya va bottom-sheet interfeysi bilan.",
+    result:"Natija: mobil va desktopda bir xil silliq ishlaydigan, native ilova hissini beruvchi tajriba.",
+    tags:['Fabric.js','Canvas API','Mobile UX'], link:'https://github.com/Developer6984', image:'' },
+  { id:'seed-2', title:'CV / Resume Builder', cat:'Productivity Tool · 2026',
+    desc:"Bitta HTML faylda ishlaydigan, ko'p shablonli rezyume tuzuvchi. Multi-profil, JSON export/import va QR-kod generatsiyasi bilan.",
+    result:"Natija: foydalanuvchi bir necha daqiqada professional ko'rinishdagi CV yaratadi.",
+    tags:['LocalStorage','Multi-template','QR Export'], link:'https://github.com/Developer6984', image:'' },
+  { id:'seed-3', title:"Sovg'a savdosi Telegram boti", cat:'Telegram Bot · E-commerce · 2026',
+    desc:"O'zbek bozori uchun sovg'a sotuvchi bot: katalog, buyurtma qabul qilish va admin boshqaruvi.",
+    result:'', tags:['Python','aiogram','Telegram Bot API'], link:'https://t.me/Dastur_Pro_Official', image:'' },
+  { id:'seed-4', title:'Media yuklovchi bot', cat:'Telegram Bot · Utility · 2026',
+    desc:"yt-dlp asosidagi bot: havola yuborilsa, video/audio yuklab beradi. Railway'da ishlaydi.",
+    result:'', tags:['Python','yt-dlp','Railway'], link:'https://t.me/Dastur_Pro_Official', image:'' },
+  { id:'seed-5', title:'AI rasm generatsiya boti', cat:'Telegram Bot · AI · 2026',
+    desc:"Pollinations.ai orqali matndan rasm yaratadigan bepul bot.",
+    result:'', tags:['Python','Pollinations.ai','aiogram'], link:'https://t.me/Dastur_Pro_Official', image:'' },
+  { id:'seed-6', title:'Uy-joy / ijara boti', cat:'Telegram Bot · Marketplace · 2026',
+    desc:"E'lonlar joylash, monetizatsiya va to'lov integratsiyasi bilan uy-joy ijara boti.",
+    result:'', tags:['Python','To\'lov integratsiyasi','aiogram'], link:'https://t.me/Dastur_Pro_Official', image:'' }
+];
+function loadProjects(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(raw) return JSON.parse(raw);   // faqat admin brauzerida (qoralama)
+  }catch(e){}
+  return PUBLISHED_PROJECTS;
+}
+function saveProjects(list){ localStorage.setItem(STORAGE_KEY, JSON.stringify(list)); }
+function escapeHtml(str){ const d=document.createElement('div'); d.textContent = str || ''; return d.innerHTML; }
+function escapeAttr(str){ return (str||'').replace(/"/g,'&quot;'); }
+
+function renderProjects(){
+  const list = loadProjects();
+  document.getElementById('statProjects').textContent = list.length;
+  const grid = document.getElementById('projectsGrid');
+  grid.innerHTML = list.map(p => `
+    <div class="card">
+      <div class="card-preview">${p.image ? `<img src="${p.image}" alt="${escapeAttr(p.title)}">` : `<span>Screenshot shu yerga</span>`}</div>
+      <div class="card-body">
+        <div class="k">${escapeHtml(p.cat || '')}</div>
+        <h3>${escapeHtml(p.title)}</h3>
+        <p>${escapeHtml(p.desc || '')}</p>
+        ${p.result ? `<div class="result">${escapeHtml(p.result)}</div>` : ''}
+        <div class="tag-row">${(p.tags||[]).map(t=>`<span>${escapeHtml(t)}</span>`).join('')}</div>
+        ${p.link ? `<a href="${escapeAttr(p.link)}" target="_blank" class="card-link">Loyihani ko'rish<i class="fa-solid fa-arrow-right"></i></a>` : ''}
+      </div>
+    </div>
+  `).join('');
+  [...grid.children].forEach((c,i)=>c.style.setProperty('--i',i));
+}
+renderProjects();
+
+/* ============ ADMIN PANEL ============ */
+const DEFAULT_PASSWORD = 'SeniorCode2026';
+function getActivePassword(){ return localStorage.getItem('cxr_admin_pass') || DEFAULT_PASSWORD; }
+
+const overlay = document.getElementById('adminOverlay');
+const loginView = document.getElementById('loginView');
+const dashboardView = document.getElementById('dashboardView');
+const adminTitle = document.getElementById('adminTitle');
+
+function openModal(){
+  overlay.classList.add('show');
+  sessionStorage.getItem('cxr_admin') === 'true' ? showDashboard() : showLogin();
+}
+function closeModal(){ overlay.classList.remove('show'); }
+function showLogin(){
+  loginView.style.display = 'block'; dashboardView.style.display = 'none';
+  adminTitle.textContent = 'Admin kirish';
+  document.getElementById('adminPassInput').value = '';
+  document.getElementById('loginError').style.display = 'none';
+}
+function showDashboard(){
+  loginView.style.display = 'none'; dashboardView.style.display = 'block';
+  adminTitle.textContent = 'Admin panel';
+  renderAdminList(); resetForm();
+}
+document.getElementById('openAdmin').addEventListener('click', openModal);
+document.getElementById('closeAdmin').addEventListener('click', closeModal);
+overlay.addEventListener('click', (e)=>{ if(e.target === overlay) closeModal(); });
+
+document.getElementById('loginBtn').addEventListener('click', ()=>{
+  const val = document.getElementById('adminPassInput').value;
+  if(val === getActivePassword()){ sessionStorage.setItem('cxr_admin','true'); showDashboard(); }
+  else { document.getElementById('loginError').style.display = 'block'; }
+});
+document.getElementById('adminPassInput').addEventListener('keydown', (e)=>{ if(e.key==='Enter') document.getElementById('loginBtn').click(); });
+document.getElementById('logoutBtn').addEventListener('click', ()=>{ sessionStorage.removeItem('cxr_admin'); showLogin(); });
+
+/* Tabs */
+document.querySelectorAll('.admin-tab').forEach(tab=>{
+  tab.addEventListener('click', ()=>{
+    document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('tabProjects').style.display = tab.dataset.tab === 'projects' ? 'block' : 'none';
+    document.getElementById('tabSettings').style.display = tab.dataset.tab === 'settings' ? 'block' : 'none';
+  });
+});
+
+/* Change password */
+document.getElementById('changePassBtn').addEventListener('click', ()=>{
+  const cur = document.getElementById('curPass').value;
+  const n1 = document.getElementById('newPass').value;
+  const n2 = document.getElementById('newPass2').value;
+  const successEl = document.getElementById('passSuccess');
+  const errorEl = document.getElementById('passError');
+  successEl.style.display = 'none'; errorEl.style.display = 'none';
+  if(cur !== getActivePassword()){ errorEl.textContent = "Joriy parol noto'g'ri."; errorEl.style.display='block'; return; }
+  if(n1.length < 6){ errorEl.textContent = "Yangi parol kamida 6 belgidan iborat bo'lsin."; errorEl.style.display='block'; return; }
+  if(n1 !== n2){ errorEl.textContent = "Yangi parollar mos kelmadi."; errorEl.style.display='block'; return; }
+  localStorage.setItem('cxr_admin_pass', n1);
+  successEl.style.display = 'block';
+  document.getElementById('curPass').value=''; document.getElementById('newPass').value=''; document.getElementById('newPass2').value='';
+});
+
+/* Project form */
+let editingImage = '';
+document.getElementById('pImage').addEventListener('change', (e)=>{
+  const file = e.target.files[0]; if(!file) return;
+  const reader = new FileReader();
+  reader.onload = ()=>{ editingImage = reader.result; };
+  reader.readAsDataURL(file);
+});
+function resetForm(){
+  document.getElementById('editId').value = '';
+  document.getElementById('pTitle').value = '';
+  document.getElementById('pDesc').value = '';
+  document.getElementById('pResult').value = '';
+  document.getElementById('pCat').value = '';
+  document.getElementById('pLink').value = '';
+  document.getElementById('pTags').value = '';
+  document.getElementById('pImage').value = '';
+  document.getElementById('pImageUrl').value = '';
+  editingImage = '';
+  document.getElementById('cancelEditBtn').style.display = 'none';
+}
+document.getElementById('saveProjectBtn').addEventListener('click', ()=>{
+  const title = document.getElementById('pTitle').value.trim();
+  if(!title){ alert("Loyiha nomini kiriting."); return; }
+  const list = loadProjects();
+  const id = document.getElementById('editId').value;
+  const data = {
+    id: id || ('p-' + Date.now()), title,
+    desc: document.getElementById('pDesc').value.trim(),
+    result: document.getElementById('pResult').value.trim(),
+    cat: document.getElementById('pCat').value.trim(),
+    link: document.getElementById('pLink').value.trim(),
+    tags: document.getElementById('pTags').value.split(',').map(t=>t.trim()).filter(Boolean),
+    image: editingImage || document.getElementById('pImageUrl').value.trim() || (list.find(p=>p.id===id)?.image || '')
+  };
+  if(id){ const idx = list.findIndex(p=>p.id===id); if(idx>-1) list[idx]=data; }
+  else{ list.unshift(data); }
+  saveProjects(list); renderProjects(); renderAdminList(); resetForm();
+});
+document.getElementById('cancelEditBtn').addEventListener('click', resetForm);
+
+/* Eksport / qoralamani tozalash */
+document.getElementById('exportBtn').addEventListener('click', async ()=>{
+  const json = 'const PUBLISHED_PROJECTS = ' + JSON.stringify(loadProjects(), null, 2) + ';';
+  const msg = document.getElementById('exportMsg');
+  try{ await navigator.clipboard.writeText(json); msg.textContent = "Nusxalandi. Faylda PUBLISHED_PROJECTS massivini shu bilan almashtiring."; }
+  catch(e){ prompt("Nusxa oling (Ctrl+C):", json); msg.textContent = ''; }
+  msg.style.display = 'block';
+});
+document.getElementById('resetDraftBtn').addEventListener('click', ()=>{
+  if(!confirm("Qoralama o'chiriladi va saytdagi e'lon qilingan ro'yxat qaytadi. Davom etasizmi?")) return;
+  localStorage.removeItem(STORAGE_KEY);
+  renderProjects(); renderAdminList();
+});
+
+function renderAdminList(){
+  const list = loadProjects();
+  const box = document.getElementById('adminList');
+  if(list.length===0){ box.innerHTML = '<p style="color:var(--muted);font-size:13px;">Hali loyiha qo\'shilmagan.</p>'; return; }
+  box.innerHTML = list.map(p => `
+    <div class="admin-item">
+      ${p.image ? `<img class="thumb" src="${p.image}">` : `<div class="thumb"></div>`}
+      <div class="info"><b>${escapeHtml(p.title)}</b><span>${escapeHtml(p.cat||'')}</span></div>
+      <div class="acts">
+        <button class="mini-btn" data-edit="${p.id}">Tahrirlash</button>
+        <button class="mini-btn danger" data-del="${p.id}">O'chirish</button>
+      </div>
+    </div>
+  `).join('');
+  box.querySelectorAll('[data-edit]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const p = loadProjects().find(x=>x.id===btn.dataset.edit); if(!p) return;
+      document.getElementById('editId').value = p.id;
+      document.getElementById('pTitle').value = p.title;
+      document.getElementById('pDesc').value = p.desc;
+      document.getElementById('pResult').value = p.result || '';
+      document.getElementById('pCat').value = p.cat;
+      document.getElementById('pLink').value = p.link;
+      document.getElementById('pTags').value = (p.tags||[]).join(', ');
+      editingImage = (p.image && !p.image.startsWith('http')) ? p.image : '';
+      document.getElementById('pImageUrl').value = (p.image && p.image.startsWith('http')) ? p.image : '';
+      document.getElementById('cancelEditBtn').style.display = 'inline-block';
+    });
+  });
+  box.querySelectorAll('[data-del]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      if(!confirm("Ushbu loyihani o'chirishni tasdiqlaysizmi?")) return;
+      saveProjects(loadProjects().filter(x=>x.id!==btn.dataset.del));
+      renderProjects(); renderAdminList();
+    });
+  });
+}
+
+/* ============ FAQ ACCORDION ============ */
+document.querySelectorAll('.faq-item').forEach(item=>{
+  const q = item.querySelector('.faq-q');
+  const a = item.querySelector('.faq-a');
+  q.addEventListener('click', ()=>{
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>{ i.classList.remove('open'); i.querySelector('.faq-a').style.maxHeight = null; });
+    if(!isOpen){ item.classList.add('open'); a.style.maxHeight = a.scrollHeight + 'px'; }
+  });
+});
+
+/* ============ ORDER FORM -> TELEGRAM ============ */
+document.getElementById('sendOrderBtn').addEventListener('click', ()=>{
+  const name = document.getElementById('oName').value.trim();
+  const contact = document.getElementById('oContact').value.trim();
+  const type = document.getElementById('oType').value;
+  const budget = document.getElementById('oBudget').value;
+  const desc = document.getElementById('oDesc').value.trim();
+  if(!name || !desc){ alert("Kamida ism va loyiha tavsifini kiriting."); return; }
+  const message = `Salom! Yangi buyurtma:\nIsm: ${name}\nAloqa: ${contact || 'kiritilmagan'}\nLoyiha turi: ${type}\nByudjet: ${budget}\nTavsif: ${desc}`;
+  const url = 'https://t.me/Code_X_Root?text=' + encodeURIComponent(message);
+  window.open(url, '_blank');
+});
+
+
+/* ============ ANIMATSIYA: scroll, nav, tilt, count-up ============ */
+const reduceMotion = matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+// Stagger indekslari (statik gridlar)
+document.querySelectorAll('.stagger').forEach(g => [...g.children].forEach((c,i)=>c.style.setProperty('--i', i)));
+
+// Scroll: progress bar, nav soyasi, to-top tugmasi
+const navEl = document.querySelector('nav');
+const progressEl = document.getElementById('progress');
+const toTopBtn = document.getElementById('toTop');
+let ticking = false;
+function onScroll(){
+  const y = window.scrollY;
+  const max = document.documentElement.scrollHeight - innerHeight;
+  progressEl.style.transform = 'scaleX(' + (max > 0 ? y / max : 0) + ')';
+  navEl.classList.toggle('scrolled', y > 8);
+  toTopBtn.classList.toggle('show', y > 600);
+  ticking = false;
+}
+window.addEventListener('scroll', ()=>{ if(!ticking){ ticking = true; requestAnimationFrame(onScroll); } }, {passive:true});
+onScroll();
+toTopBtn.addEventListener('click', ()=> window.scrollTo({top:0, behavior: reduceMotion ? 'auto' : 'smooth'}));
+
+// Scrollspy: faol bo'lim linkini belgilash
+const spyLinks = [...document.querySelectorAll('.nav-links a')];
+const spy = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      spyLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+    }
+  });
+},{rootMargin:'-45% 0px -50% 0px'});
+spyLinks.forEach(a=>{ const t = document.querySelector(a.getAttribute('href')); if(t) spy.observe(t); });
+
+// Raqam sanash (hero statistikasi)
+function countUp(el, to, dur=900){
+  if(reduceMotion){ el.textContent = to; return; }
+  const t0 = performance.now();
+  (function f(t){
+    const k = Math.min((t - t0) / dur, 1);
+    el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3)));
+    if(k < 1) requestAnimationFrame(f);
+  })(t0);
+}
+countUp(document.getElementById('statProjects'), loadProjects().length);
+
+// Portret: sichqoncha bilan yengil 3D og'ish (faqat sichqonchali qurilmalarda)
+const portraitEl = document.querySelector('.hero .portrait');
+if(portraitEl && !reduceMotion && matchMedia('(hover:hover) and (pointer:fine)').matches){
+  portraitEl.addEventListener('mousemove', (e)=>{
+    const r = portraitEl.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - .5;
+    const y = (e.clientY - r.top) / r.height - .5;
+    portraitEl.style.transform = `perspective(900px) rotateY(${x*8}deg) rotateX(${-y*8}deg) translateY(-4px)`;
+  });
+  portraitEl.addEventListener('mouseleave', ()=>{ portraitEl.style.transform = ''; });
+}
+
+/* ============ SCROLL REVEAL ============ */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+},{threshold:0.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
